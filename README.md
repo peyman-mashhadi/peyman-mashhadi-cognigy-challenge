@@ -20,6 +20,7 @@
       </ul>
     </li>
     <li><a href="#endpoints">Endpoints</a></li>
+    <li><a href="#running-postman-tests">Running Postman tests</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
