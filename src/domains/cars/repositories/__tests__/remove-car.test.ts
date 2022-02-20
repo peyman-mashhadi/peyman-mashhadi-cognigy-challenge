@@ -1,9 +1,9 @@
 import { CarModel } from "../../model/car";
-import { createCar } from "../createCar";
-import { removeCar } from "../removeCar";
-import { DB } from "../../../../common/db/testMongodb";
+import { createCar } from "../create-car";
+import { removeCar } from "../remove-car";
+import { DB } from "../../../../common/db/test-mongodb";
 import { ObjectID } from "bson";
-import { findCarById } from "../findCarById";
+import { findCarById } from "../find-car-by-id";
 
 describe("removeCar", () => {
   beforeAll(() => DB.connect());

@@ -1,6 +1,6 @@
 import { ICar, RemoveCar } from "../types/car";
 import { CarModel } from "../model/car";
-import { HttpException } from "../../../common/handlers/httpException";
+import { HttpException } from "../../../common/handlers/http-exception";
 
 export const removeCar: RemoveCar = async (id: string) => {
   try {

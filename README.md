@@ -263,6 +263,15 @@ To run the tests:
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+### Running Postman tests
+
+  To run end2end tests using Postman, you can import the test collection into your postman:
+
+- `postman-tests/cognigy.postman_collection.json`
+
+The test results would be like:
+
+![postman-test-results]
 
 <!-- CONTACT -->
 ## Contact
@@ -277,3 +286,4 @@ Peyman Mashhadi - peyman.ma84@gmail.com
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/peyman-mashhadi-6b0b991b4/
 [npm-run-test-result]: images/npm-run-test-result.png
+[postman-test-results]: images/postman-test-results.png

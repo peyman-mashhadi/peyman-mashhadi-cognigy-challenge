@@ -2,9 +2,9 @@ import express from "express";
 import cors from "cors";
 import { carRoutes } from "./domains/cars/routes";
 import { connectToDatabase } from "./common/db/mongodb";
-import { errorHandler } from "./common/handlers/errorMiddleware";
-import { HttpException } from "./common/handlers/httpException";
-import { authMiddleware } from "./common/handlers/authMiddelware";
+import { errorHandler } from "./common/handlers/error-middleware";
+import { HttpException } from "./common/handlers/http-exception";
+import { authMiddleware } from "./common/handlers/auth-middelware";
 import * as dotenv from "dotenv";
 
 dotenv.config();
