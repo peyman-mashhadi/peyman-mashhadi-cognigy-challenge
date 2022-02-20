@@ -180,7 +180,7 @@
 							"",
 							"pm.test(\"Should return metadata of all cars\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.total).to.above(2);",
+							"    pm.expect(jsonData.total).to.gte(2);",
 							"    pm.expect(jsonData.brandInsights).to.length.gte(2);",
 							"    pm.expect(jsonData.registrationYearInsights).to.length.gte(2);",
 							"});",
