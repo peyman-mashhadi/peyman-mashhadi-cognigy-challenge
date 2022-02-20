@@ -1,4 +1,3 @@
-/* eslint-disable no-process-env */
 import mongoose from "mongoose";
 
 // this environment variable is preset by jest-mongodb
