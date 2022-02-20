@@ -1,7 +1,12 @@
-import { CarModel }  from "../model/car";
+import { CarModel } from "../model/car";
 
+// I wasn't sure what you mean by meta data of cars,
+// so I assumed we may need some insightful data from our records
 export const findCars = async (): Promise<any> => {
-  const carsTotal = await CarModel.count();
+  const total = await CarModel.count();
+
+  // group all the cars by their brands and return all their available models
+  // along with min and max of their prices and registration's years
   const brandInsights = await CarModel.aggregate([
     {
       $group: {
@@ -27,6 +32,9 @@ export const findCars = async (): Promise<any> => {
       },
     },
   ]);
+
+  // group all the cars by their registration's years and return
+  // all the available brands along with min and max of their prices
   const registrationYearInsights = await CarModel.aggregate([
     {
       $group: {
@@ -49,7 +57,7 @@ export const findCars = async (): Promise<any> => {
     },
   ]);
   const carsMetadata = {
-    total: carsTotal,
+    total,
     brandInsights,
     registrationYearInsights,
   };

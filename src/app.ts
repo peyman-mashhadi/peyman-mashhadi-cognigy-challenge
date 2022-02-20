@@ -3,7 +3,7 @@ import cors from "cors";
 import { carRoutes } from "./domains/cars/routes";
 import { connectToDatabase } from "./common/db/mongodb";
 import { errorHandler } from "./common/handlers/errorMiddleware";
-import {HttpException} from "./common/handlers/httpException";
+import { HttpException } from "./common/handlers/httpException";
 import { authMiddleware } from "./common/handlers/authMiddelware";
 import * as dotenv from "dotenv";
 
