@@ -1,8 +1,8 @@
 import { CarModel } from "../../model/car";
-import { bulkCreateCars } from "../bulkCreateCars";
-import { DB } from "../../../../common/db/testMongodb";
+import { bulkCreateCars } from "../bulk-create-cars";
+import { DB } from "../../../../common/db/test-mongodb";
 import { mockCars } from "./mock";
-import { findCars } from "../findCars";
+import { findCars } from "../find-cars";
 
 describe("findCarsMetadata", () => {
   beforeAll(() => DB.connect());

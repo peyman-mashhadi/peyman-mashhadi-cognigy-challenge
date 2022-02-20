@@ -1,16 +1,16 @@
 import { Response, Request, NextFunction } from "express";
-import { findCars } from "../repositories/findCars";
-import { findCarById } from "../repositories/findCarById";
-import { createCar } from "../repositories/createCar";
-import { updateCar } from "../repositories/updateCar";
-import { removeCar } from "../repositories/removeCar";
+import { findCars } from "../repositories/find-cars";
+import { findCarById } from "../repositories/find-car-by-id";
+import { createCar } from "../repositories/create-car";
+import { updateCar } from "../repositories/update-car";
+import { removeCar } from "../repositories/remove-car";
 import {
   bulkCreateCarsSchema,
   createCarsSchema,
   updateCarsSchema,
   validate,
 } from "./schema";
-import { bulkCreateCars } from "../repositories/bulkCreateCars";
+import { bulkCreateCars } from "../repositories/bulk-create-cars";
 import { ICar } from "../types/car";
 
 const getCars = async (

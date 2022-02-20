@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "77e3de33-ac39-4163-a05f-58cfb6d9da9e",
+		"name": "cognigy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Car 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Should return created car\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.newCar.brand).to.eql(\"BMW\");",
+							"    pm.collectionVariables.set(\"car_id1\", jsonData.newCar._id);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "cognigy",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"brand\": \"BMW\",\n    \"model\": \"320i Sedan Advantage LED\",\n    \"registrationYear\": 2012,\n    \"price\": 31000,\n    \"seats\": 4,\n    \"color\": \"red\",\n    \"imgUrl\": \"https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/7xoAAOSwmvBhof98/$_86.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/car",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"car"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Car 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Should return created car\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.newCar.model).to.eql(\"Golf Variant VII Cup BMT\");",
+							"    pm.collectionVariables.set(\"car_id2\", jsonData.newCar._id);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "cognigy",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"brand\": \"VOLKSWAGEN\",\n    \"model\": \"Golf Variant VII Cup BMT\",\n    \"registrationYear\": 2020,\n    \"price\": 24000,\n    \"seats\": 4,\n    \"color\": \"black\",\n    \"imgUrl\": \"https://i.ebayimg.com/00/s/MTA4MFgxNDQw/z/vMkAAOSwBuhh8JWf/$_27.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/car",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"car"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Car 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Should return updated car\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.updatedCar.price).to.eql(44000);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "cognigy",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 44000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/car/{{car_id1}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"car",
+						"{{car_id1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cars Metadata",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Should return metadata of all cars\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.total).to.above(2);",
+							"    pm.expect(jsonData.brandInsights).to.length.gte(2);",
+							"    pm.expect(jsonData.registrationYearInsights).to.length.gte(2);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "cognigy"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/car",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"car"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Car By Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Should return updated car\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.car._id).to.eql(pm.collectionVariables.get(\"car_id2\"));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "cognigy"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/car/{{car_id2}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"car",
+						"{{car_id2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Car By Id 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Should return deleted car\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.deletedCar._id).to.eql(pm.collectionVariables.get(\"car_id1\"));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "cognigy"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/car/{{car_id1}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"car",
+						"{{car_id1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Car By Id 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Should return deleted car\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.deletedCar._id).to.eql(pm.collectionVariables.get(\"car_id2\"));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "cognigy"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/car/{{car_id2}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"car",
+						"{{car_id2}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "car_id1",
+			"value": ""
+		},
+		{
+			"key": "car_id2",
+			"value": ""
+		}
+	]
+}

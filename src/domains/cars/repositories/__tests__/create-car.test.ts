@@ -1,6 +1,6 @@
 import { CarModel } from "../../model/car";
-import { createCar } from "../createCar";
-import { DB } from "../../../../common/db/testMongodb";
+import { createCar } from "../create-car";
+import { DB } from "../../../../common/db/test-mongodb";
 import { ObjectID } from "bson";
 
 describe("createCar", () => {

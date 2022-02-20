@@ -1,6 +1,6 @@
 import { ICar, UpdateCar } from "../types/car";
 import { CarModel } from "../model/car";
-import { HttpException } from "../../../common/handlers/httpException";
+import { HttpException } from "../../../common/handlers/http-exception";
 
 export const updateCar: UpdateCar = async (id: string, body: Partial<ICar>) => {
   try {

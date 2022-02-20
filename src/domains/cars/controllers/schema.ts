@@ -1,5 +1,5 @@
 import Ajv from "ajv";
-import { HttpException } from "../../../common/handlers/httpException";
+import { HttpException } from "../../../common/handlers/http-exception";
 import {
   MAX_REGISTRATION_YEAR,
   MIN_REGISTRATION_YEAR,

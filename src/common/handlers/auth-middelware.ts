@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { HttpException } from "./httpException";
+import { HttpException } from "./http-exception";
 import * as dotenv from "dotenv";
 
 dotenv.config();
